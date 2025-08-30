@@ -29,6 +29,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy - required when running behind a reverse proxy like Render
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -89,7 +92,7 @@ const specs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get(['/health', '/api/health'], (req, res) => {
   res.status(200).json({
     status: 'OK',
     message: 'Travel API is running',
