@@ -12,6 +12,7 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
+          "outputHashing": "all",
           "options": {
             "baseHref": "/",
             "deployUrl": "/",

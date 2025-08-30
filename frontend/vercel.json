@@ -16,11 +16,16 @@
       "dest": "https://wander-wise-hub.onrender.com/api/$1"
     },
     {
+      "src": "/",
+      "dest": "/home"
+    },
+    {
+      "src": "/home",
+      "dest": "/index.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
