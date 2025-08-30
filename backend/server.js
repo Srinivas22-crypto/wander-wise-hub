@@ -47,9 +47,22 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// CORS configuration - allow all origins and headers
+// CORS configuration
+const isProduction = process.env.NODE_ENV === 'production';
+const allowedOrigins = isProduction 
+  ? (process.env.FRONTEND_URL || 'https://wander-wise-hub.vercel.app').split(',').map(o => o.trim())
+  : ['http://localhost:4200', 'http://localhost:3000'];
+
 const corsOptions = {
-  origin: true, // Reflect the request origin
+  origin: isProduction 
+    ? function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      }
+    : '*',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: '*',
   exposedHeaders: '*',
