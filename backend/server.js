@@ -123,8 +123,8 @@ app.use(errorHandler);
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📚 API Documentation: http://localhost:${PORT}/api-docs`);
-  console.log(`🏥 Health Check: http://localhost:${PORT}/health`);
+  console.log("API Documentation",process.env.API_URL );
+  console.log("Health Check,pr",pocess.env.API_URL);
 });
 
 export default app;
