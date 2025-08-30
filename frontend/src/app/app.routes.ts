@@ -61,7 +61,13 @@ export const routes: Routes = [
     loadComponent: () => import('./features/destination/destination-detail.component').then(m => m.DestinationDetailComponent)
   },
   
+  // Test route for API testing
+  {
+    path: 'test',
+    loadComponent: () => import('./features/test/test.component').then(m => m.TestComponent)
+  },
+  
   // Error routes
-  { path: '404', loadComponent: () => import('./shared/components/not-found/not-found.component').then(m => m.NotFoundComponent) },
+  { path: '404', loadComponent: () => import('./features/not-found/not-found.component').then(m => m.NotFoundComponent) },
   { path: '**', redirectTo: '/404' }
 ];
