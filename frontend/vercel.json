@@ -3,11 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/frontend",
-        "cleanUrls": true
-      }
+      "use": "@vercel/angular"
     }
   ],
   "routes": [
@@ -17,10 +13,7 @@
     },
     {
       "src": "^/(.*)",
-      "dest": "/index.html"
+      "dest": "/"
     }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
