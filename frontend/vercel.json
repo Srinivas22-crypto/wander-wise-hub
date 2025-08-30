@@ -5,7 +5,8 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/frontend"
+        "distDir": "dist/frontend",
+        "cleanUrls": true
       }
     }
   ],
@@ -18,5 +19,8 @@
       "src": "^/(.*)",
       "dest": "/index.html"
     }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
