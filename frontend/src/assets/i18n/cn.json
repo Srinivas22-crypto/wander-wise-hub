@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "您的旅程从这里开始",
+    "SEARCH_PLACEHOLDER": "搜索目的地、酒店、体验...",
+    "NOTIFICATIONS": "通知",
+    "MARK_ALL_READ": "全部标记为已读",
+    "NO_NOTIFICATIONS": "没有新通知",
+    "LANGUAGE": "语言",
+    "THEME": "主题",
+    "PROFILE_SETTINGS": "个人资料设置",
+    "MY_BOOKINGS": "我的预订",
+    "FAVORITES": "收藏夹",
+    "LOGOUT": "登出",
+    "SIGN_IN": "登录",
+    "REGISTER": "注册"
+  },
+  "NAVIGATION": {
+    "HOME": "首页",
+    "EXPLORE": "探索",
+    "DESTINATIONS": "目的地",
+    "EXPERIENCES": "体验",
+    "TRAVEL_GUIDES": "旅行指南",
+    "BOOK": "预订",
+    "FLIGHTS": "航班",
+    "HOTELS": "酒店",
+    "CAR_RENTAL": "租车",
+    "COMMUNITY": "社区"
+  },
+  "HOME": {
+    "HERO_TITLE": "发现您的下一个",
+    "HERO_SUBTITLE": "冒险",
+    "HERO_DESCRIPTION": "探索令人惊叹的目的地，预订难忘的体验，与世界各地的旅行者建立联系。",
+    "START_JOURNEY": "开始您的旅程",
+    "COMMUNITY": "社区"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "航班预订已确认",
+    "FLIGHT_BOOKING_MESSAGE": "您前往巴黎的航班已确认，日期为2024年3月15日",
+    "CHECK_IN_REMINDER": "值机提醒",
+    "CHECK_IN_MESSAGE": "别忘了为明天的航班在线值机",
+    "SPECIAL_HOTEL_DEAL": "特别酒店优惠",
+    "HOTEL_DEAL_MESSAGE": "罗马豪华酒店7折优惠 - 限时优惠！"
+  },
+  "COMMON": {
+    "SEARCH": "搜索",
+    "CLEAR": "清除",
+    "CLOSE": "关闭",
+    "SAVE": "保存",
+    "CANCEL": "取消",
+    "DELETE": "删除",
+    "EDIT": "编辑",
+    "VIEW": "查看",
+    "LOADING": "加载中...",
+    "ERROR": "错误",
+    "SUCCESS": "成功"
+  }
+}

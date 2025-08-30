@@ -1,0 +1,198 @@
+<div class="payment-container" [class.dark-mode]="isDarkMode">
+  <div class="payment-header">
+    <button class="back-button" (click)="goBack()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+    <div class="header-content">
+      <h1>Payment</h1>
+      <p>Secure payment processing for your travel bookings</p>
+    </div>
+  </div>
+
+  <div class="payment-content">
+    <div class="payment-form-section">
+      <div class="payment-methods">
+        <h2>Select Payment Method</h2>
+        
+        <div class="payment-method-options">
+          <div class="payment-option" 
+               [class.selected]="selectedPaymentMethod === 'credit-card'"
+               (click)="selectPaymentMethod('credit-card')">
+            <div class="radio-button">
+              <div class="radio-inner" [class.active]="selectedPaymentMethod === 'credit-card'"></div>
+            </div>
+            <span>Credit Card</span>
+          </div>
+          
+          <div class="payment-option disabled">
+            <div class="radio-button">
+              <div class="radio-inner"></div>
+            </div>
+            <span>PayPal (Coming Soon)</span>
+          </div>
+          
+          <div class="payment-option disabled">
+            <div class="radio-button">
+              <div class="radio-inner"></div>
+            </div>
+            <span>Bank Transfer (Coming Soon)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="credit-card-form" *ngIf="selectedPaymentMethod === 'credit-card'">
+        <div class="form-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+          <h3>Credit Card</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" [(ngModel)]="cardNumber" placeholder="1234 5678 9012 3456">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="text" id="expiryDate" [(ngModel)]="expiryDate" placeholder="MM/YY">
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" [(ngModel)]="cvv" placeholder="123">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameOnCard">Name on Card</label>
+          <input type="text" id="nameOnCard" [(ngModel)]="nameOnCard" placeholder="John Doe">
+        </div>
+
+        <div class="billing-address">
+          <h3>Billing Address</h3>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" [(ngModel)]="address" placeholder="123 Main St">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" [(ngModel)]="city" placeholder="New York">
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" id="state" [(ngModel)]="state" placeholder="NY">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" id="zipCode" [(ngModel)]="zipCode" placeholder="10001">
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" [(ngModel)]="country">
+                <option value="Select country">Select country</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Australia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="security-notice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+            <path d="M3 12h6m6 0h6"/>
+          </svg>
+          <span>Secure Payment</span>
+          <p>Your payment information is encrypted and secure</p>
+        </div>
+
+        <button class="process-payment-btn" (click)="processPayment()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11l3 3L22 4"/>
+          </svg>
+          Process Payment ${{orderSummary.total.toFixed(2)}}
+        </button>
+      </div>
+    </div>
+
+    <div class="order-summary-section">
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        
+        <div class="summary-item">
+          <span>Flight to {{destinationName}}</span>
+          <span>${{orderSummary.flightToDestination.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-item">
+          <span>Hotel Booking (3 nights)</span>
+          <span>${{orderSummary.hotelBooking.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-item">
+          <span>Travel Insurance</span>
+          <span>${{orderSummary.travelInsurance.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-divider"></div>
+        
+        <div class="summary-item">
+          <span>Subtotal</span>
+          <span>${{orderSummary.subtotal.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-item">
+          <span>Taxes</span>
+          <span>${{orderSummary.taxes.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-divider"></div>
+        
+        <div class="summary-item total">
+          <span>Total</span>
+          <span>${{orderSummary.total.toFixed(2)}}</span>
+        </div>
+
+        <div class="guarantees">
+          <div class="guarantee-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>30-day money back guarantee</span>
+          </div>
+          
+          <div class="guarantee-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>24/7 customer support</span>
+          </div>
+          
+          <div class="guarantee-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>Instant booking confirmation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

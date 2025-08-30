@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "Il Tuo Viaggio Inizia Qui",
+    "SEARCH_PLACEHOLDER": "Cerca destinazioni, hotel, esperienze...",
+    "NOTIFICATIONS": "Notifiche",
+    "MARK_ALL_READ": "Segna tutto come letto",
+    "NO_NOTIFICATIONS": "Nessuna nuova notifica",
+    "LANGUAGE": "Lingua",
+    "THEME": "Tema",
+    "PROFILE_SETTINGS": "Impostazioni Profilo",
+    "MY_BOOKINGS": "Le Mie Prenotazioni",
+    "FAVORITES": "Preferiti",
+    "LOGOUT": "Esci",
+    "SIGN_IN": "Accedi",
+    "REGISTER": "Registrati"
+  },
+  "NAVIGATION": {
+    "HOME": "Home",
+    "EXPLORE": "Esplora",
+    "DESTINATIONS": "Destinazioni",
+    "EXPERIENCES": "Esperienze",
+    "TRAVEL_GUIDES": "Guide di Viaggio",
+    "BOOK": "Prenota",
+    "FLIGHTS": "Voli",
+    "HOTELS": "Hotel",
+    "CAR_RENTAL": "Noleggio Auto",
+    "COMMUNITY": "Comunità"
+  },
+  "HOME": {
+    "HERO_TITLE": "Scopri la Tua Prossima",
+    "HERO_SUBTITLE": "Avventura",
+    "HERO_DESCRIPTION": "Esplora destinazioni incredibili, prenota esperienze uniche e connettiti con altri viaggiatori in tutto il mondo.",
+    "START_JOURNEY": "Inizia il Tuo Viaggio",
+    "COMMUNITY": "Comunità"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "Prenotazione Volo Confermata",
+    "FLIGHT_BOOKING_MESSAGE": "Il tuo volo per Parigi è stato confermato per il 15 marzo 2024",
+    "CHECK_IN_REMINDER": "Promemoria Check-in",
+    "CHECK_IN_MESSAGE": "Non dimenticare di fare il check-in online per il tuo volo di domani",
+    "SPECIAL_HOTEL_DEAL": "Offerta Speciale Hotel",
+    "HOTEL_DEAL_MESSAGE": "30% di sconto su hotel di lusso a Roma - Offerta a tempo limitato!"
+  },
+  "COMMON": {
+    "SEARCH": "Cerca",
+    "CLEAR": "Cancella",
+    "CLOSE": "Chiudi",
+    "SAVE": "Salva",
+    "CANCEL": "Annulla",
+    "DELETE": "Elimina",
+    "EDIT": "Modifica",
+    "VIEW": "Visualizza",
+    "LOADING": "Caricamento...",
+    "ERROR": "Errore",
+    "SUCCESS": "Successo"
+  }
+}

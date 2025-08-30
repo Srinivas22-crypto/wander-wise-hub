@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "Your Journey Starts Here",
+    "SEARCH_PLACEHOLDER": "Search destinations, hotels, experiences...",
+    "NOTIFICATIONS": "Notifications",
+    "MARK_ALL_READ": "Mark all read",
+    "NO_NOTIFICATIONS": "No new notifications",
+    "LANGUAGE": "Language",
+    "THEME": "Theme",
+    "PROFILE_SETTINGS": "Profile Settings",
+    "MY_BOOKINGS": "My Bookings",
+    "FAVORITES": "Favorites",
+    "LOGOUT": "Logout",
+    "SIGN_IN": "Sign In",
+    "REGISTER": "Register"
+  },
+  "NAVIGATION": {
+    "HOME": "Home",
+    "EXPLORE": "Explore",
+    "DESTINATIONS": "Destinations",
+    "EXPERIENCES": "Experiences",
+    "TRAVEL_GUIDES": "Travel Guides",
+    "BOOK": "Book",
+    "FLIGHTS": "Flights",
+    "HOTELS": "Hotels",
+    "CAR_RENTAL": "Car Rental",
+    "COMMUNITY": "Community"
+  },
+  "HOME": {
+    "HERO_TITLE": "Discover Your Next",
+    "HERO_SUBTITLE": "Adventure",
+    "HERO_DESCRIPTION": "Explore amazing destinations, book incredible experiences, and connect with fellow travelers around the world.",
+    "START_JOURNEY": "Start Your Journey",
+    "COMMUNITY": "Community"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "Flight Booking Confirmed",
+    "FLIGHT_BOOKING_MESSAGE": "Your flight to Paris has been confirmed for March 15th, 2024",
+    "CHECK_IN_REMINDER": "Check-in Reminder",
+    "CHECK_IN_MESSAGE": "Don't forget to check-in online for your flight tomorrow",
+    "SPECIAL_HOTEL_DEAL": "Special Hotel Deal",
+    "HOTEL_DEAL_MESSAGE": "30% off luxury hotels in Rome - Limited time offer!"
+  },
+  "COMMON": {
+    "SEARCH": "Search",
+    "CLEAR": "Clear",
+    "CLOSE": "Close",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "VIEW": "View",
+    "LOADING": "Loading...",
+    "ERROR": "Error",
+    "SUCCESS": "Success"
+  }
+}

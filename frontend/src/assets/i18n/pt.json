@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "Sua Jornada Começa Aqui",
+    "SEARCH_PLACEHOLDER": "Pesquisar destinos, hotéis, experiências...",
+    "NOTIFICATIONS": "Notificações",
+    "MARK_ALL_READ": "Marcar tudo como lido",
+    "NO_NOTIFICATIONS": "Nenhuma nova notificação",
+    "LANGUAGE": "Idioma",
+    "THEME": "Tema",
+    "PROFILE_SETTINGS": "Configurações do Perfil",
+    "MY_BOOKINGS": "Minhas Reservas",
+    "FAVORITES": "Favoritos",
+    "LOGOUT": "Sair",
+    "SIGN_IN": "Entrar",
+    "REGISTER": "Registrar"
+  },
+  "NAVIGATION": {
+    "HOME": "Início",
+    "EXPLORE": "Explorar",
+    "DESTINATIONS": "Destinos",
+    "EXPERIENCES": "Experiências",
+    "TRAVEL_GUIDES": "Guias de Viagem",
+    "BOOK": "Reservar",
+    "FLIGHTS": "Voos",
+    "HOTELS": "Hotéis",
+    "CAR_RENTAL": "Aluguel de Carros",
+    "COMMUNITY": "Comunidade"
+  },
+  "HOME": {
+    "HERO_TITLE": "Descubra Sua Próxima",
+    "HERO_SUBTITLE": "Aventura",
+    "HERO_DESCRIPTION": "Explore destinos incríveis, reserve experiências únicas e conecte-se com outros viajantes ao redor do mundo.",
+    "START_JOURNEY": "Comece Sua Jornada",
+    "COMMUNITY": "Comunidade"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "Reserva de Voo Confirmada",
+    "FLIGHT_BOOKING_MESSAGE": "Seu voo para Paris foi confirmado para 15 de março de 2024",
+    "CHECK_IN_REMINDER": "Lembrete de Check-in",
+    "CHECK_IN_MESSAGE": "Não esqueça de fazer o check-in online para seu voo de amanhã",
+    "SPECIAL_HOTEL_DEAL": "Oferta Especial de Hotel",
+    "HOTEL_DEAL_MESSAGE": "30% de desconto em hotéis de luxo em Roma - Oferta por tempo limitado!"
+  },
+  "COMMON": {
+    "SEARCH": "Pesquisar",
+    "CLEAR": "Limpar",
+    "CLOSE": "Fechar",
+    "SAVE": "Salvar",
+    "CANCEL": "Cancelar",
+    "DELETE": "Excluir",
+    "EDIT": "Editar",
+    "VIEW": "Ver",
+    "LOADING": "Carregando...",
+    "ERROR": "Erro",
+    "SUCCESS": "Sucesso"
+  }
+}

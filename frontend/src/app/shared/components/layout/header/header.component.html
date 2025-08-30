@@ -1,0 +1,240 @@
+<header class="header">
+  <div class="header-container">
+    <!-- Logo and Brand -->
+    <div class="brand">
+      <a routerLink="/home" class="brand-link">
+        <div class="brand-icon">✈️</div>
+        <span class="brand-text">{{ 'HEADER.BRAND' | translate }}</span>
+        <span class="brand-tagline">{{ 'HEADER.TAGLINE' | translate }}</span>
+      </a>
+    </div>
+
+    <!-- Main Navigation -->
+    <app-navigation-menu 
+      [items]="navigationItems"
+      className="main-navigation"
+      (itemClick)="onNavigationItemClick($event)">
+    </app-navigation-menu>
+
+    <!-- Right Side Controls -->
+    <div class="header-controls">
+      <!-- Search -->
+      <div class="search-container" [class.expanded]="isSearchExpanded">
+        <button class="search-toggle" (click)="toggleSearch()" title="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+        <input 
+          type="text" 
+          class="search-input" 
+          [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate"
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="onSearch()"
+          (blur)="onSearchBlur()"
+        />
+        <button 
+          *ngIf="searchQuery" 
+          class="search-clear" 
+          (click)="clearSearch()" 
+          title="Clear search"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Notifications -->
+      <div class="notification-dropdown" *ngIf="isAuthenticated$ | async">
+        <button 
+          class="notification-btn" 
+          (click)="toggleNotifications()" 
+          title="Notifications"
+          [attr.aria-expanded]="isNotificationsOpen"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+          <span class="notification-badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+        </button>
+
+        <div class="notifications-dropdown" [class.show]="isNotificationsOpen">
+          <div class="notifications-header">
+            <h3>{{ 'HEADER.NOTIFICATIONS' | translate }}</h3>
+            <button class="mark-all-read" (click)="markAllAsRead()">{{ 'HEADER.MARK_ALL_READ' | translate }}</button>
+            <button class="close-notifications" (click)="toggleNotifications()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="notifications-list">
+            <div class="notification-item" *ngFor="let notification of notifications">
+              <div class="notification-icon" [ngClass]="'icon-' + notification.type">
+                <span *ngIf="notification.type === 'booking'">✈️</span>
+                <span *ngIf="notification.type === 'reminder'">⏰</span>
+                <span *ngIf="notification.type === 'offer'">🏨</span>
+              </div>
+              <div class="notification-content">
+                <h4>{{ notification.title }}</h4>
+                <p>{{ notification.message }}</p>
+                <span class="notification-time">{{ notification.time }}</span>
+              </div>
+              <button class="dismiss-notification" (click)="dismissNotification(notification.id)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="no-notifications" *ngIf="notifications.length === 0">
+              <p>{{ 'HEADER.NO_NOTIFICATIONS' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language & Region -->
+      <div class="language-dropdown">
+        <button 
+          class="language-btn" 
+          (click)="toggleLanguageDropdown()" 
+          title="Language"
+          [attr.aria-expanded]="isLanguageDropdownOpen"
+        >
+          <span class="flag-icon">{{ getCurrentLanguageFlag() }}</span>
+          <span class="language-text">{{ getCurrentLanguageName() }}</span>
+          <svg class="chevron-down" [class.open]="isLanguageDropdownOpen" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+
+        <div class="language-dropdown-menu" [class.show]="isLanguageDropdownOpen">
+          <div class="language-option" 
+               *ngFor="let lang of languages" 
+               (click)="selectLanguage(lang.code)"
+               [class.selected]="selectedLanguage === lang.code">
+            <span class="flag">{{ lang.flag }}</span>
+            <span class="code">{{ lang.code.toUpperCase() }}</span>
+            <span class="name">{{ lang.name }}</span>
+            <svg *ngIf="selectedLanguage === lang.code" class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button (click)="toggleTheme()" class="theme-toggle" title="Toggle theme">
+        <svg *ngIf="!(isDarkMode$ | async)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg *ngIf="isDarkMode$ | async" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+      </button>
+
+      <!-- User Menu -->
+      <div class="user-menu" *ngIf="isAuthenticated$ | async; else authButtons">
+        <button (click)="toggleUserMenu()" class="user-button">
+          <img
+            [src]="getUserAvatar()"
+            [alt]="(currentUser$ | async)?.name || 'User'"
+            class="user-avatar"
+            (error)="onAvatarError($event)"
+          />
+        </button>
+
+        <div class="user-dropdown" [class.show]="isUserMenuOpen">
+          <div class="user-info">
+            <img
+              [src]="getUserAvatar()"
+              [alt]="(currentUser$ | async)?.name || 'User'"
+              class="user-avatar-large"
+              (error)="onAvatarError($event)"
+            />
+            <div class="user-details">
+              <span class="user-name">{{ (currentUser$ | async)?.name }}</span>
+              <span class="user-email">{{ (currentUser$ | async)?.email }}</span>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a routerLink="/profile" class="dropdown-item" (click)="toggleUserMenu()">
+            <span class="dropdown-icon">👤</span>
+            {{ 'HEADER.PROFILE_SETTINGS' | translate }}
+          </a>
+          <a routerLink="/bookings" class="dropdown-item" (click)="toggleUserMenu()">
+            <span class="dropdown-icon">📋</span>
+            {{ 'HEADER.MY_BOOKINGS' | translate }}
+          </a>
+          <a routerLink="/favorites" class="dropdown-item" (click)="toggleUserMenu()">
+            <span class="dropdown-icon">❤️</span>
+            {{ 'HEADER.FAVORITES' | translate }}
+          </a>
+          <div class="dropdown-divider"></div>
+          <button (click)="logout()" class="dropdown-item logout">
+            <span class="dropdown-icon">🚪</span>
+            {{ 'HEADER.LOGOUT' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Auth Buttons (Not logged in) -->
+      <ng-template #authButtons>
+        <div class="auth-buttons">
+          <a routerLink="/auth/signin" class="auth-link signin">{{ 'HEADER.SIGN_IN' | translate }}</a>
+          <a routerLink="/auth/register" class="auth-link register">{{ 'HEADER.REGISTER' | translate }}</a>
+        </div>
+      </ng-template>
+
+      <!-- Mobile Menu Toggle -->
+      <button (click)="toggleMobileMenu()" class="mobile-menu-toggle">
+        <span class="hamburger" [class.active]="isMobileMenuOpen"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" [class.open]="isMobileMenuOpen">
+    <div class="mobile-nav-content">
+      <a routerLink="/home" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <span class="nav-icon">🏠</span>
+        {{ 'NAVIGATION.HOME' | translate }}
+      </a>
+      <a routerLink="/explore" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <span class="nav-icon">📍</span>
+        {{ 'NAVIGATION.EXPLORE' | translate }}
+      </a>
+      <a routerLink="/bookings/flights" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <span class="nav-icon">✈️</span>
+        {{ 'NAVIGATION.FLIGHTS' | translate }}
+      </a>
+      <a routerLink="/bookings/hotels" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <span class="nav-icon">🏨</span>
+        {{ 'NAVIGATION.HOTELS' | translate }}
+      </a>
+      <a routerLink="/community" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <span class="nav-icon">👥</span>
+        {{ 'NAVIGATION.COMMUNITY' | translate }}
+      </a>
+      <div class="mobile-nav-divider"></div>
+      <div class="mobile-nav-controls">
+        <button (click)="toggleTheme()" class="mobile-control-btn">
+          <span *ngIf="!(isDarkMode$ | async)">🌙</span>
+          <span *ngIf="isDarkMode$ | async">☀️</span>
+          <span>{{ 'HEADER.THEME' | translate }}</span>
+        </button>
+        <button class="mobile-control-btn">
+          <span>{{ getCurrentLanguageFlag() }}</span>
+          <span>{{ getCurrentLanguageName() }}</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

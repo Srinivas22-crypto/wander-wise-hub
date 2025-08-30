@@ -1,0 +1,274 @@
+<div class="community-container" [class.dark-mode]="isDarkMode">
+  <!-- Header Section -->
+  <header class="community-header">
+    <div class="header-content">
+      <h1 class="page-title">Travel Community</h1>
+      <p class="page-subtitle">Connect with fellow travelers and share your experiences</p>
+      
+      <div class="header-actions">
+        <button (click)="openShareModal()" class="share-story-btn">
+          <span class="btn-icon">+</span>
+          Share Your Story
+        </button>
+        <button class="join-groups-btn">
+          <span class="btn-icon">👥</span>
+          Join Groups
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <!-- Left Content -->
+    <div class="content-left">
+      <!-- Navigation Tabs -->
+      <nav class="content-tabs">
+        <button 
+          (click)="setActiveTab('feed')" 
+          class="tab-button" 
+          [class.active]="activeTab === 'feed'">
+          Feed
+        </button>
+        <button 
+          (click)="setActiveTab('groups')" 
+          class="tab-button" 
+          [class.active]="activeTab === 'groups'">
+          Groups
+        </button>
+        <button 
+          (click)="setActiveTab('create')" 
+          class="tab-button" 
+          [class.active]="activeTab === 'create'">
+          Create Post
+        </button>
+      </nav>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Feed Tab -->
+        <div *ngIf="activeTab === 'feed'" class="feed-content">
+          <!-- Loading State -->
+          <div *ngIf="isLoading" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading posts...</p>
+          </div>
+
+          <!-- Posts Feed -->
+          <div *ngIf="!isLoading" class="posts-feed">
+            <article *ngFor="let post of posts" class="post-card">
+              <!-- Post Header -->
+              <header class="post-header">
+                <div class="author-info">
+                  <div class="author-avatar">
+                    <span class="avatar-initials">{{ post.author.name.charAt(0) }}</span>
+                  </div>
+                  <div class="author-details">
+                    <div class="author-name">
+                      {{ post.author.name }} 
+                      <span class="author-username">{{ post.author.username }}</span>
+                    </div>
+                    <div class="post-meta">
+                      <span *ngIf="post.location" class="post-location">📍 {{ post.location }}</span>
+                      <span class="post-time">• {{ getTimeAgo(post.timestamp) }}</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="post-menu">⋯</button>
+              </header>
+
+              <!-- Post Content -->
+              <div class="post-content">
+                <p class="post-text">{{ post.content }}</p>
+                
+                <!-- Post Images -->
+                <div *ngIf="post.images.length > 0" class="post-images">
+                  <img [src]="post.images[0]" [alt]="'Post image'" class="post-image" />
+                </div>
+
+                <!-- Post Tags -->
+                <div *ngIf="post.tags.length > 0" class="post-tags">
+                  <span *ngFor="let tag of post.tags" class="post-tag">#{{ tag }}</span>
+                </div>
+              </div>
+
+              <!-- Post Actions -->
+              <footer class="post-actions">
+                <button (click)="toggleLike(post)" class="action-btn" [class.liked]="post.isLiked">
+                  <span class="action-icon">❤️</span>
+                  <span class="action-count">{{ post.likes }}</span>
+                </button>
+                <button (click)="openComments(post)" class="action-btn">
+                  <span class="action-icon">💬</span>
+                  <span class="action-count">{{ post.comments }}</span>
+                </button>
+                <button (click)="sharePost(post)" class="action-btn">
+                  <span class="action-icon">🔗</span>
+                  <span class="action-count">{{ post.shares }}</span>
+                </button>
+              </footer>
+            </article>
+          </div>
+        </div>
+
+        <!-- Groups Tab -->
+        <div *ngIf="activeTab === 'groups'" class="groups-content">
+          <div class="groups-header">
+            <input type="text" placeholder="Search groups..." class="search-input">
+            <button class="create-group-btn">+ Create Group</button>
+          </div>
+          
+          <div class="groups-grid">
+            <div *ngFor="let group of groups" class="group-card">
+              <div class="group-image">
+                <div class="group-placeholder"></div>
+              </div>
+              <div class="group-info">
+                <h3 class="group-name">{{ group.name }}</h3>
+                <p class="group-category">{{ group.category }}</p>
+                <p class="group-description">{{ group.description }}</p>
+                <div class="group-stats">
+                  <span class="member-count">👥 {{ group.members | number }} members</span>
+                </div>
+                <button 
+                  (click)="toggleJoinGroup(group)" 
+                  class="join-btn"
+                  [class.joined]="group.isJoined">
+                  {{ group.isJoined ? 'Joined' : 'Join Group' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Create Post Tab -->
+        <div *ngIf="activeTab === 'create'" class="create-content">
+          <div class="create-header">
+            <h2>Share Your Travel Experience</h2>
+            <p>Tell the community about your latest adventure</p>
+          </div>
+          
+          <div class="create-form">
+            <p>Use our enhanced story sharing feature for the best experience</p>
+            <button (click)="openShareModal()" class="enhanced-share-btn">
+              + Share Your Story
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar">
+      <!-- Trending Topics -->
+      <div class="trending-section">
+        <h3 class="section-title">📈 Trending Topics</h3>
+        <div class="trending-list">
+          <div *ngFor="let topic of trendingTopics" class="trending-item">
+            <span class="hashtag">{{ topic.hashtag }}</span>
+            <span class="post-count">{{ topic.posts | number }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Stats -->
+      <div class="stats-section">
+        <h3 class="section-title">Community Stats</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">{{ communityStats.activeUsers }}</span>
+            <span class="stat-label">Active Travelers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ communityStats.sharedExperiences }}</span>
+            <span class="stat-label">Shared Experiences</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ communityStats.countriesVisited }}</span>
+            <span class="stat-label">Countries Visited</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- Share Story Modal -->
+<div *ngIf="showShareModal" class="modal-overlay" (click)="closeShareModal()">
+  <div class="share-modal" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h2 class="modal-title">Share Your Travel Story</h2>
+      <p class="modal-subtitle">Share your amazing travel experiences with the community</p>
+      <button (click)="closeShareModal()" class="modal-close">✕</button>
+    </header>
+
+    <form (ngSubmit)="submitStory()" class="share-form">
+      <div class="form-group">
+        <label class="form-label">Your Story *</label>
+        <textarea
+          [(ngModel)]="newStoryContent"
+          placeholder="Tell us about your amazing travel experience..."
+          class="story-textarea"
+          rows="6"
+          name="content"
+          maxlength="2000"
+          required
+        ></textarea>
+        <div class="char-count">{{ newStoryContent.length }}/2000</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Location</label>
+        <input
+          [(ngModel)]="newStoryLocation"
+          type="text"
+          placeholder="Where did this happen?"
+          class="location-input"
+          name="location"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tags</label>
+        <input
+          [(ngModel)]="newStoryTags"
+          type="text"
+          placeholder="Add tags (press Enter or comma to add)"
+          class="tags-input"
+          name="tags"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Images (Max 4)</label>
+        <div class="image-upload">
+          <input
+            type="file"
+            (change)="onImageSelect($event)"
+            accept="image/*"
+            multiple
+            class="file-input"
+            id="imageUpload"
+          />
+          <label for="imageUpload" class="upload-button">
+            <span class="upload-icon">📷</span>
+            Upload Images
+          </label>
+          <span class="upload-note">Add Images</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="closeShareModal()" class="cancel-btn">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="share-btn"
+          [disabled]="!newStoryContent.trim()"
+        >
+          Share Story
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

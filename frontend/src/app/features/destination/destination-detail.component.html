@@ -1,0 +1,114 @@
+<div class="destination-detail-container" [class.dark-mode]="isDarkMode">
+  <div class="destination-hero">
+    <div class="hero-image">
+      <img [src]="destination.image" [alt]="destination.name" />
+      <div class="hero-overlay">
+        <button class="back-button" (click)="goBack()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="favorite-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="destination-info">
+        <h1 class="destination-name">{{ destination.name }}</h1>
+        <p class="destination-location">{{ destination.country }}</p>
+        <div class="destination-rating">
+          <div class="stars">
+            <span *ngFor="let star of getStarArray(destination.rating)" class="star filled">⭐</span>
+            <span *ngFor="let star of getEmptyStarArray(destination.rating)" class="star">☆</span>
+          </div>
+          <span class="rating-value">{{ destination.rating }}</span>
+          <span class="reviews-count">({{ destination.reviewsCount }} reviews)</span>
+        </div>
+      </div>
+      
+      <div class="booking-card">
+        <div class="price-info">
+          <span class="price-label">From</span>
+          <span class="price-value">${{ destination.price }}</span>
+          <span class="price-period">per person</span>
+        </div>
+        <button class="book-now-btn" (click)="bookNow()">
+          <span>Book Now</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="destination-content">
+    <div class="content-section">
+      <h2>About this destination</h2>
+      <p class="destination-description">{{ destination.description }}</p>
+      
+      <div class="highlights">
+        <h3>Highlights</h3>
+        <div class="highlights-grid">
+          <div class="highlight-item" *ngFor="let highlight of destination.highlights">
+            <div class="highlight-icon">{{ highlight.icon }}</div>
+            <div class="highlight-text">
+              <h4>{{ highlight.title }}</h4>
+              <p>{{ highlight.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activities">
+        <h3>Popular Activities</h3>
+        <div class="activities-grid">
+          <div class="activity-card" *ngFor="let activity of destination.activities">
+            <img [src]="activity.image" [alt]="activity.name" />
+            <div class="activity-info">
+              <h4>{{ activity.name }}</h4>
+              <p class="activity-price">${{ activity.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="quick-facts">
+        <h3>Quick Facts</h3>
+        <div class="fact-item">
+          <span class="fact-label">Best time to visit:</span>
+          <span class="fact-value">{{ destination.bestTime }}</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Language:</span>
+          <span class="fact-value">{{ destination.language }}</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Currency:</span>
+          <span class="fact-value">{{ destination.currency }}</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Time zone:</span>
+          <span class="fact-value">{{ destination.timezone }}</span>
+        </div>
+      </div>
+
+      <div class="weather-widget">
+        <h3>Weather</h3>
+        <div class="weather-info">
+          <div class="weather-icon">☀️</div>
+          <div class="weather-details">
+            <span class="temperature">{{ destination.weather.temperature }}°C</span>
+            <span class="weather-desc">{{ destination.weather.description }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

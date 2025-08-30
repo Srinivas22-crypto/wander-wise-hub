@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "Votre Voyage Commence Ici",
+    "SEARCH_PLACEHOLDER": "Rechercher destinations, hôtels, expériences...",
+    "NOTIFICATIONS": "Notifications",
+    "MARK_ALL_READ": "Tout marquer comme lu",
+    "NO_NOTIFICATIONS": "Aucune nouvelle notification",
+    "LANGUAGE": "Langue",
+    "THEME": "Thème",
+    "PROFILE_SETTINGS": "Paramètres du Profil",
+    "MY_BOOKINGS": "Mes Réservations",
+    "FAVORITES": "Favoris",
+    "LOGOUT": "Déconnexion",
+    "SIGN_IN": "Se Connecter",
+    "REGISTER": "S'inscrire"
+  },
+  "NAVIGATION": {
+    "HOME": "Accueil",
+    "EXPLORE": "Explorer",
+    "DESTINATIONS": "Destinations",
+    "EXPERIENCES": "Expériences",
+    "TRAVEL_GUIDES": "Guides de Voyage",
+    "BOOK": "Réserver",
+    "FLIGHTS": "Vols",
+    "HOTELS": "Hôtels",
+    "CAR_RENTAL": "Location de Voiture",
+    "COMMUNITY": "Communauté"
+  },
+  "HOME": {
+    "HERO_TITLE": "Découvrez Votre Prochaine",
+    "HERO_SUBTITLE": "Aventure",
+    "HERO_DESCRIPTION": "Explorez des destinations incroyables, réservez des expériences uniques et connectez-vous avec d'autres voyageurs du monde entier.",
+    "START_JOURNEY": "Commencez Votre Voyage",
+    "COMMUNITY": "Communauté"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "Réservation de Vol Confirmée",
+    "FLIGHT_BOOKING_MESSAGE": "Votre vol pour Paris a été confirmé pour le 15 mars 2024",
+    "CHECK_IN_REMINDER": "Rappel d'Enregistrement",
+    "CHECK_IN_MESSAGE": "N'oubliez pas de vous enregistrer en ligne pour votre vol de demain",
+    "SPECIAL_HOTEL_DEAL": "Offre Spéciale Hôtel",
+    "HOTEL_DEAL_MESSAGE": "30% de réduction sur les hôtels de luxe à Rome - Offre limitée dans le temps!"
+  },
+  "COMMON": {
+    "SEARCH": "Rechercher",
+    "CLEAR": "Effacer",
+    "CLOSE": "Fermer",
+    "SAVE": "Sauvegarder",
+    "CANCEL": "Annuler",
+    "DELETE": "Supprimer",
+    "EDIT": "Modifier",
+    "VIEW": "Voir",
+    "LOADING": "Chargement...",
+    "ERROR": "Erreur",
+    "SUCCESS": "Succès"
+  }
+}

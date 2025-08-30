@@ -1,0 +1,74 @@
+<nav class="navigation-menu" [class]="className">
+  <ul class="navigation-menu-list">
+    <li 
+      *ngFor="let item of items" 
+      class="navigation-menu-item"
+      [class.has-dropdown]="item.children && item.children.length > 0"
+    >
+      <!-- Simple Link -->
+      <a 
+        *ngIf="!item.children || item.children.length === 0; else dropdownTrigger"
+        [routerLink]="item.href"
+        class="navigation-menu-link"
+        (click)="onItemClick(item)"
+      >
+        <span *ngIf="item.icon" class="navigation-menu-icon">{{ item.icon }}</span>
+        {{ item.label }}
+      </a>
+
+      <!-- Dropdown Trigger -->
+      <ng-template #dropdownTrigger>
+        <button 
+          class="navigation-menu-trigger"
+          (mouseenter)="showDropdown(item.label)"
+          (mouseleave)="hideDropdown(item.label)"
+          [attr.aria-expanded]="activeDropdown === item.label"
+          [attr.aria-haspopup]="true"
+        >
+          <span *ngIf="item.icon" class="navigation-menu-icon">{{ item.icon }}</span>
+          {{ item.label }}
+          <svg 
+            class="navigation-menu-chevron" 
+            [class.open]="activeDropdown === item.label"
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          >
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+
+        <!-- Dropdown Content -->
+        <div 
+          class="navigation-menu-content"
+          [class.open]="activeDropdown === item.label"
+          (mouseenter)="showDropdown(item.label)"
+          (mouseleave)="hideDropdown(item.label)"
+          role="menu"
+          [attr.aria-hidden]="activeDropdown !== item.label"
+        >
+          <div class="navigation-menu-viewport">
+            <a 
+              *ngFor="let child of item.children"
+              [routerLink]="child.href"
+              class="navigation-menu-dropdown-item"
+              (click)="onItemClick(child)"
+              role="menuitem"
+            >
+              <span *ngIf="child.icon" class="dropdown-item-icon">{{ child.icon }}</span>
+              <div class="dropdown-item-content">
+                <span class="dropdown-item-title">{{ child.label }}</span>
+                <span *ngIf="child.description" class="dropdown-item-description">{{ child.description }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+</nav>

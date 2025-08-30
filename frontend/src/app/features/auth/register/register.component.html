@@ -1,0 +1,168 @@
+<div class="auth-container">
+  <!-- Logo -->
+  <div class="auth-logo">
+    <div class="logo-icon">✈️</div>
+    <span class="logo-text">TravelHub</span>
+  </div>
+
+  <!-- Sign Up Card -->
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Create Account</h1>
+      <p class="auth-subtitle">Join TravelHub and start your journey</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-message">
+        <span class="error-icon">⚠️</span>
+        {{ errorMessage }}
+      </div>
+
+      <!-- Name Fields Row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            class="form-input"
+            [class.error]="getFieldError('firstName')"
+            placeholder=""
+          />
+          <div *ngIf="getFieldError('firstName')" class="field-error">
+            {{ getFieldError('firstName') }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            class="form-input"
+            [class.error]="getFieldError('lastName')"
+            placeholder=""
+          />
+          <div *ngIf="getFieldError('lastName')" class="field-error">
+            {{ getFieldError('lastName') }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-input"
+          [class.error]="getFieldError('email')"
+          placeholder=""
+        />
+        <div *ngIf="getFieldError('email')" class="field-error">
+          {{ getFieldError('email') }}
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <div class="password-input-container">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            class="form-input"
+            [class.error]="getFieldError('password')"
+            placeholder=""
+          />
+          <button
+            type="button"
+            (click)="togglePasswordVisibility('password')"
+            class="password-toggle"
+            [title]="showPassword ? 'Hide password' : 'Show password'"
+          >
+            <span *ngIf="!showPassword">👁️</span>
+            <span *ngIf="showPassword">🙈</span>
+          </button>
+        </div>
+        <div *ngIf="getFieldError('password')" class="field-error">
+          {{ getFieldError('password') }}
+        </div>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <div class="password-input-container">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-input"
+            [class.error]="getFieldError('confirmPassword')"
+            placeholder=""
+          />
+          <button
+            type="button"
+            (click)="togglePasswordVisibility('confirmPassword')"
+            class="password-toggle"
+            [title]="showConfirmPassword ? 'Hide password' : 'Show password'"
+          >
+            <span *ngIf="!showConfirmPassword">👁️</span>
+            <span *ngIf="showConfirmPassword">🙈</span>
+          </button>
+        </div>
+        <div *ngIf="getFieldError('confirmPassword')" class="field-error">
+          {{ getFieldError('confirmPassword') }}
+        </div>
+      </div>
+
+      <!-- Terms Agreement -->
+      <div class="form-group">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="agreeToTerms" class="checkbox">
+          <span class="checkbox-label">
+            I accept the 
+            <a href="#" class="terms-link">terms and conditions</a>
+          </span>
+        </label>
+        <div *ngIf="getFieldError('agreeToTerms')" class="field-error">
+          {{ getFieldError('agreeToTerms') }}
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="isLoading"
+        [class.loading]="isLoading"
+      >
+        <span *ngIf="!isLoading">Create Account</span>
+        <span *ngIf="isLoading" class="loading-text">
+          <span class="spinner"></span>
+          Creating account...
+        </span>
+      </button>
+
+      <!-- Sign In Link -->
+      <div class="auth-footer">
+        <p class="auth-footer-text">
+          Already have an account? 
+          <a routerLink="/auth/signin" class="auth-link">Sign in here</a>
+        </p>
+      </div>
+
+      <!-- Back to Home -->
+      <div class="back-to-home">
+        <a routerLink="/home" class="back-link">
+          ← Back to home
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

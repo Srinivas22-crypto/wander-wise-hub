@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "BRAND": "TravelHub",
+    "TAGLINE": "あなたの旅はここから始まります",
+    "SEARCH_PLACEHOLDER": "目的地、ホテル、体験を検索...",
+    "NOTIFICATIONS": "通知",
+    "MARK_ALL_READ": "すべて既読にする",
+    "NO_NOTIFICATIONS": "新しい通知はありません",
+    "LANGUAGE": "言語",
+    "THEME": "テーマ",
+    "PROFILE_SETTINGS": "プロフィール設定",
+    "MY_BOOKINGS": "マイ予約",
+    "FAVORITES": "お気に入り",
+    "LOGOUT": "ログアウト",
+    "SIGN_IN": "サインイン",
+    "REGISTER": "登録"
+  },
+  "NAVIGATION": {
+    "HOME": "ホーム",
+    "EXPLORE": "探索",
+    "DESTINATIONS": "目的地",
+    "EXPERIENCES": "体験",
+    "TRAVEL_GUIDES": "旅行ガイド",
+    "BOOK": "予約",
+    "FLIGHTS": "フライト",
+    "HOTELS": "ホテル",
+    "CAR_RENTAL": "レンタカー",
+    "COMMUNITY": "コミュニティ"
+  },
+  "HOME": {
+    "HERO_TITLE": "次の旅を発見",
+    "HERO_SUBTITLE": "アドベンチャー",
+    "HERO_DESCRIPTION": "素晴らしい目的地を探索し、信じられない体験を予約し、世界中の仲間の旅行者とつながりましょう。",
+    "START_JOURNEY": "旅を始める",
+    "COMMUNITY": "コミュニティ"
+  },
+  "NOTIFICATIONS": {
+    "FLIGHT_BOOKING_CONFIRMED": "フライト予約確認",
+    "FLIGHT_BOOKING_MESSAGE": "2024年3月15日のパリ行きフライトが確認されました",
+    "CHECK_IN_REMINDER": "チェックイン リマインダー",
+    "CHECK_IN_MESSAGE": "明日のフライトのオンラインチェックインをお忘れなく",
+    "SPECIAL_HOTEL_DEAL": "特別ホテル取引",
+    "HOTEL_DEAL_MESSAGE": "ローマの高級ホテルが30%オフ - 期間限定オファー！"
+  },
+  "COMMON": {
+    "SEARCH": "検索",
+    "CLEAR": "クリア",
+    "CLOSE": "閉じる",
+    "SAVE": "保存",
+    "CANCEL": "キャンセル",
+    "DELETE": "削除",
+    "EDIT": "編集",
+    "VIEW": "表示",
+    "LOADING": "読み込み中...",
+    "ERROR": "エラー",
+    "SUCCESS": "成功"
+  }
+}
