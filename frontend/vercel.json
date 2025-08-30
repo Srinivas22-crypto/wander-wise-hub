@@ -1,0 +1,23 @@
+{
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist/frontend",
+  "framework": "angular",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/frontend"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

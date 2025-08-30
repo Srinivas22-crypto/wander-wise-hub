@@ -48,21 +48,28 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // CORS configuration
-const isProduction = process.env.NODE_ENV === 'production';
-const allowedOrigins = isProduction 
-  ? (process.env.FRONTEND_URL || 'https://wander-wise-hub.vercel.app').split(',').map(o => o.trim())
-  : ['http://localhost:4200', 'http://localhost:3000'];
+const allowedOrigins = [
+  'https://wander-wise-hub.vercel.app',
+  'https://www.wander-wise-hub.vercel.app',
+  'http://localhost:4200',
+];
 
 const corsOptions = {
-  origin: isProduction 
-    ? function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      }
-    : '*',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Check if the origin is in the allowed list
+    if (allowedOrigins.some(allowedOrigin => 
+      origin === allowedOrigin || 
+      origin.startsWith(allowedOrigin.replace('*', ''))
+    )) {
+      return callback(null, true);
+    }
+    
+    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+    return callback(new Error(msg), false);
+  },
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: '*',
   exposedHeaders: '*',
