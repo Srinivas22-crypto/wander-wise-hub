@@ -124,7 +124,7 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log("API Documentation",process.env.API_URL );
-  console.log("Health Check,pr",pocess.env.API_URL);
+  console.log("Health Check, pr", process.env.API_URL);
 });
 
 export default app;
