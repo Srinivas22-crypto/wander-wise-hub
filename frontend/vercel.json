@@ -2,11 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "vercel-build.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/frontend",
-        "cleanDistDir": true
+        "distDir": "dist/frontend"
       }
     }
   ],
@@ -14,14 +13,6 @@
     {
       "src": "/api/(.*)",
       "dest": "https://wander-wise-hub.onrender.com/api/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/home"
-    },
-    {
-      "src": "/home",
-      "dest": "/index.html"
     },
     {
       "src": "/(.*)",
