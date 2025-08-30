@@ -11,17 +11,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular/build:browser",
           "options": {
             "outputPath": "dist/frontend",
-            "outputHashing": "all",
             "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "outputHashing": "all",
             "baseHref": "/",
             "deployUrl": "/",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
