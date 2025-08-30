@@ -18,6 +18,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
+      // Don't handle auth errors if backend is down (502, 503, 504)
+      if (error.status === 502 || error.status === 503 || error.status === 504) {
+        console.warn('Backend service unavailable:', error.status);
+        return throwError(() => error);
+      }
+
       if (error.status === 401) {
         // Token expired or invalid
         if (req.url.includes('/auth/refresh')) {

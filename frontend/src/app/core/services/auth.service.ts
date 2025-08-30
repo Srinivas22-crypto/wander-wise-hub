@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 
@@ -169,6 +169,16 @@ export class AuthService {
       map(response => response.data),
       tap(authData => {
         localStorage.setItem('authToken', authData.token);
+      }),
+      catchError((error: any) => {
+        // Don't logout if backend is unavailable
+        if (error.status === 502 || error.status === 503 || error.status === 504) {
+          console.warn('Backend unavailable during token refresh');
+          return throwError(() => error);
+        }
+        // Only logout for actual auth errors
+        this.logout();
+        return throwError(() => error);
       })
     );
   }
