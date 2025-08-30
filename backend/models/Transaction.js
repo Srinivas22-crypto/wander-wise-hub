@@ -194,7 +194,6 @@ transactionSchema.pre('save', function(next) {
 // Create indexes
 transactionSchema.index({ user: 1, createdAt: -1 });
 transactionSchema.index({ booking: 1 });
-transactionSchema.index({ transactionId: 1 });
 transactionSchema.index({ status: 1, createdAt: -1 });
 transactionSchema.index({ gatewayTransactionId: 1 });
 

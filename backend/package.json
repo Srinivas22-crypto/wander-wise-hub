@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "seed:destinations": "node scripts/seedDestinations.js",
-    "seed:more-destinations": "node scripts/seedMoreDestinations.js"
+    "seed:more-destinations": "node scripts/seedMoreDestinations.js",
+    "build": "node -e \"console.log('Verifying dependencies...')\" && npm install --omit=dev && node -e \"console.log('Build completed successfully!')\""
   },
   "keywords": [
     "travel",

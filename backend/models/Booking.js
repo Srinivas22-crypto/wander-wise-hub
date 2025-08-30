@@ -277,7 +277,6 @@ bookingSchema.pre('save', function(next) {
 
 // Create indexes
 bookingSchema.index({ user: 1, createdAt: -1 });
-bookingSchema.index({ bookingReference: 1 });
 bookingSchema.index({ status: 1, paymentStatus: 1 });
 bookingSchema.index({ type: 1, startDate: 1 });
 

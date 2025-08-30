@@ -305,25 +305,25 @@ button:disabled {
     padding: 0 var(--spacing-sm);
   }
   
-  .sm\\:hidden { display: none; }
-  .sm\\:block { display: block; }
-  .sm\\:flex { display: flex; }
-  .sm\\:text-sm { font-size: var(--font-size-sm); }
-  .sm\\:text-base { font-size: var(--font-size-base); }
+  .sm-hidden { display: none; }
+  .sm-block { display: block; }
+  .sm-flex { display: flex; }
+  .sm-text-sm { font-size: var(--font-size-sm); }
+  .sm-text-base { font-size: var(--font-size-base); }
 }
 
 @media (min-width: 768px) {
-  .md\\:block { display: block; }
-  .md\\:flex { display: flex; }
-  .md\\:hidden { display: none; }
-  .md\\:text-lg { font-size: var(--font-size-lg); }
-  .md\\:text-xl { font-size: var(--font-size-xl); }
+  .md-block { display: block; }
+  .md-flex { display: flex; }
+  .md-hidden { display: none; }
+  .md-text-lg { font-size: var(--font-size-lg); }
+  .md-text-xl { font-size: var(--font-size-xl); }
 }
 
 @media (min-width: 1024px) {
-  .lg\\:block { display: block; }
-  .lg\\:flex { display: flex; }
-  .lg\\:hidden { display: none; }
+  .lg-block { display: block; }
+  .lg-flex { display: flex; }
+  .lg-hidden { display: none; }
 }
 
 /* Animation utilities */
@@ -331,8 +331,10 @@ button:disabled {
 .transition-fast { transition: all var(--transition-fast); }
 .transition-slow { transition: all var(--transition-slow); }
 
-.hover\\:scale-105:hover { transform: scale(1.05); }
-.hover\\:shadow-lg:hover { box-shadow: var(--shadow-lg); }
+.hover-scale { transform: scale(1); }
+.hover-scale:hover { transform: scale(1.05); }
+.hover-shadow { box-shadow: var(--shadow-md); }
+.hover-shadow:hover { box-shadow: var(--shadow-lg); }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
