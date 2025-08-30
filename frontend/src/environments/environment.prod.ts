@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-api-domain.com/api',
+  apiUrl: 'https://wander-wise-hub.onrender.com/api',
   appName: 'TravelApp',
   version: '1.0.0',
   features: {

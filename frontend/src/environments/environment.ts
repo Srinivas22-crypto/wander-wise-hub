@@ -8,7 +8,7 @@ declare global {
 
 export const environment = {
   production: false,
-  apiUrl: window.env?.API_URL || 'http://localhost:3000/api',
+  apiUrl: 'https://wander-wise-hub.onrender.com/api',
   appName: 'TravelApp',
   version: '1.0.0',
   features: {
