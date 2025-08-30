@@ -122,9 +122,7 @@ app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log("API Documentation",process.env.API_URL );
-  console.log("Health Check, pr", process.env.API_URL);
+  console.log("running ");
 });
 
 export default app;
