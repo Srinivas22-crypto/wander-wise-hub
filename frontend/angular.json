@@ -12,8 +12,10 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "outputHashing": "all",
           "options": {
+            "outputPath": "dist/frontend",
+            "outputHashing": "all",
+            "index": "src/index.html",
             "baseHref": "/",
             "deployUrl": "/",
             "browser": "src/main.ts",
